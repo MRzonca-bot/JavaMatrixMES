@@ -7,7 +7,7 @@ public class GlobalData {
     private static double ta, a, q;
     {counter++;}
     public int id1, id2, bc;
-    private double k, s, l; //k - wspolczynnik, l - dlugosc // te dane moga byc private staticami i beda mialy osobny konstruktor lub za kazdym razem bedzie sprawdzane czy zostaly zainnicjalizowane i bool powie zeby nie inicjalizowac ponownie
+    private double k, s, l; //k - wspolczynnik, l - dlugosc
 
     public double[][] HL = {{0, 0},{0, 0}};        //    [c][-c]          tabela z wartosciami
                                                    //    [-c][c]
@@ -91,91 +91,3 @@ public class GlobalData {
         return " ta "+ ta +"\n" + " a  "+ a +"\n" + " q  "+ q;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// V3
-//      if (bool && this.bc == 1) { //jesli pierwszym wezlem jest BC1
-//              this.P[0][0] = q * this.s; //A * S idze do wektora
-//              this.Pid1 = id1;
-//              bool = false;
-//              } else if (bool && this.bc == 2){//jesli pierwszym wezlem jest BC2
-//              this.P[0][0] = -1 * a * this.s * ta;
-//              this.BL[0][0] = a * this.s;
-//              this.Pid2 = id2;
-//              bool = false;
-//              } else if (this.bc == 1){ //ostatni wezel jesli pierwszym byl BC2
-//              this.P[1][0] = q * this.s;
-//              this.Pid1 = id1;
-//
-//              } else if (this.bc == 2){//ostatni wezel jesli pierwszym byl BC1
-//              this.BL[1][1] = a * this.s; //A * S idze to macierzy
-//              this.P[1][0] =  -1 * a * this.s * ta; // idze do wektora
-//              this.Pid2 = id2;
-//              }
-//              }
-
-
-
-
-
-
-
-//        V2-----------------------------------------
-//        if(counter == 2 && this.bc == 1){ //strumien
-//                this.P[0][0] = q * this.s;
-//                this.Pid1 = this.id1;
-//                } else if (counter == 2 && this.bc == 2){ //KONWEKCJA
-//                this.BL[0][0] = a * this.s;
-//                this.P[0][0] = -1 * a * this.s * ta;
-//                this.Pid1 = this.id1;
-//                } else if (counter > 2 && this.bc == 1) { //nie musi byc >2
-//                this.P[1][0] = q * this.s;
-//                this.Pid2 = this.id2;
-//                } else if (counter > 2 && this.bc == 2) {
-//                this.BL[1][1] = a * this.s;
-//                this.P[1][0] = -1 * a * this.s * ta;
-//                this.Pid2 = this.id2;
-//                }
-
-
-//        if(counter == 2 && this.bc == 1){ //strumien
-//                this.P[0][0] = q * this.s;
-//                } else if (counter == 2 && this.bc == 2){ //KONWEKCJA
-//                this.BL[0][0] = a*this.s;
-//                this.P[0][0] = -1 * a * this.s * ta;
-//                } else if (counter > 2 && this.bc == 1) { //nie musi byc >2
-//                this.P[1][0] = q * this.s;
-//                } else if (counter > 2 && this.bc == 2) {
-//                this.BL[1][1] = a*this.s;
-//                this.P[1][0] = -1 * a * this.s * ta;
-//                }
-
-
-//    public static void calc(double[][] Results, double[][] BG, double[][] HG, GlobalData[] dataArray){ /////////CALC FUNCTION
-//        System.out.println(" ");
-//        RealMatrix matrix = new Array2DRowRealMatrix(HG, false);
-//        RealMatrix invm = MatrixUtils.inverse(matrix); //ODWORCENIE MATRIX
-//        double[][] cos = invm.getData();
-//        printMatrix(cos);
-//        System.out.println(" ");
-//        BG[0][0] = dataArray[0].P[0][0]; //PRZYPISANIE WARTOSCI DO MACIERZY BG
-//        BG[GlobalData.counter-1][0] = dataArray[GlobalData.counter-2].P[1][0];
-//        RealMatrix invm1 = new Array2DRowRealMatrix(BG, false); //PRZYPISYWANIE BG
-//        Results = invm.multiply(invm1).getData(); //MNOZENIE MATRIX
-//        multiplyByMinus(Results);
-//        printMatrix(Results);
-//    }
